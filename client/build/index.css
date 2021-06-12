@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Varela+Round&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    outline: none;
+    border: none;    
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+@media only screen and (max-width: 600px) {body{font-size: 11px;}}
+@media only screen and (min-width: 600px) {body{font-size: 11px;}}
+@media only screen and (min-width: 768px) {body{font-size: 13px;}}
+@media only screen and (min-width: 1200px) {body{font-size: 15px;}}
+
+.Main{
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.title{
+    margin: 15px;
+    font-size: 2.7em;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.mainBody{
+    height: 39em;
+    width: 100%;
+}
+
+.SearchBar{
+    width: 100%;
+    display: grid;
+    place-items: center;
+    grid-template-columns: 10fr 1fr 1fr 10fr;
+}
+
+span{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.SearchBar input{    
+    border-radius: 0.6rem;
+    width: 15em;
+    padding: 5px 10px;
+    font-size: 1.2em;
+    background-color:beige;
+
+    grid-column: 2 / 2;
+    
+}
+
+.searchButton{
+    margin: 7px;
+    padding: 0.7em 1.5em;
+
+    background-color: hsl(160, 80%, 40%);
+    color: white;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 2rem;
+    font-size: 1em;
+
+    transition: all 0.3s ease-in-out;
+
+    grid-column: 3 / 3;
+}
+
+.searchButton:hover{ background-color: hsl(160, 90%, 20%); }
+
+ul{
+    margin: 2%;
+    width: 90%;
+
+    grid-column: 1 / 5;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25em, 1fr));
+    grid-gap: 1em;
+}
+
+.ListItem{
+    height: 6em;
+    position: relative;
+    box-shadow: 5px 5px 10px #00000046;
+    transition: all 0.3s ease-in-out;
+}
+
+.ListItem:hover{ transform: scale(1.05); }
+
+.ListItem .name{
+    height: 1.2em;
+
+    width: 13em;
+    position: absolute;
+    left: 6em;
+    top: 1em;
+    font-size: 1.2em;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.ListItem .secondaryInfo{
+    height: 1.2em;
+
+    width: 13em;
+    position: absolute;
+    left: 7.25em;
+    top: 3em;
+    font-size: 1em;
+    color: #1b1b1b;
+}
+
+.ListItem img{
+    float: left;
+    width: 6em;
+    height: 6em;
+}
+
+.ListItem .add{
+    float: right;
+    width: 0em;
+    height: 6em;
+    background-color: hsl(160, 80%, 40%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in;
+}
+
+.ListItem i{
+    color: white;
+    position: static;
+    transform: scale(0);
+}
+
+.ListItem:hover .add{ width: 3.7em; }
+.ListItem:hover i{ transform: scale(1); }
+.add:active i{ transform: rotate(30deg); }
+.add:hover{ cursor: pointer; }
+
+.notif{
+    opacity: 0;
+    position: fixed;
+    text-align: center;
+    right: 0;
+    top: 0;
+    padding: 1em;
+    width: 20em;
+    color: bisque;
+    background: #1e1e1e;
+
+    transition: 1s opacity ease-out;
+}
+
