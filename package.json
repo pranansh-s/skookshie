@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "node index.js",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "keywords": [],
@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
+    "cors": "^2.8.5",
     "dotenv": "^9.0.0",
     "express": "^4.17.1",
     "spotify-web-api-node": "^5.0.2",
