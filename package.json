@@ -1,0 +1,19 @@
+{
+  "name": "spotmix",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^9.0.0",
+    "express": "^4.17.1",
+    "spotify-web-api-node": "^5.0.2",
+    "ytdl-core": "^4.8.0"
+  }
+}

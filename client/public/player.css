@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Varela+Round&display=swap');
+
+.Player{
+    position: fixed;
+    height: 5em;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(57,255,157,0.7) 7%, rgba(0,255,94,0.8) 100%);
+    border-radius: 5px 5px 0 0;
+    bottom: 0;
+
+    display: grid;
+    place-items: center;
+    grid-template-rows: 4fr 2fr;
+    grid-template-columns: 7fr 2fr 15fr 2fr 5fr 2fr 15fr 2fr 7fr;
+    gap: 1em;
+}
+
+.fas{
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    position: relative;
+    top: 20%;
+}
+
+.songTitle{
+    position: absolute;
+    left: -3em;
+    top: 0.7em;
+    width: 90%;
+    grid-column: 2 / 4;
+    
+    margin-left: 1em;
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.currentTime, .totalTime { font-size: 1em; }
+.currentTime{ grid-column: 2 / 2; }
+.previousIcon{ grid-column: 4 / 4; }
+.playIcon{ grid-column: 5 / 5; }
+.nextIcon{ grid-column: 6 / 6; }
+.totalTime{ grid-column: 8 / 8; }
+
+.Player span{ font-family:'Segoe UI', sans-serif; }
+
+.Player img{
+    grid-column: 1 / 1;
+    grid-row: 1 / 3;
+    height: 5em;
+    
+    position: relative;
+    left: -50%;
+    transform: translateX(50%);
+}
+
+.musicSeeker{
+    grid-column: 3 / 8;
+    width: 100%;
+}
+
+.queue{
+    position: absolute;
+    grid-column: 9 / 9;
+    padding: 0.3em;
+}
+
+.queue:hover{
+    transition: all 0.4s linear;
+    border-radius: 100%;
+    background: white;
+    border: 1px solid white;
+}
+
+.queue:hover .hip{
+    display: block;
+}
+
+.fa-times{
+    position: fixed;
+    display: none !important;
+    top: 4vh;
+    left: 2vw;
+}
+
+.hip{
+    position: absolute;
+    z-index: -1;
+    right: -1.5em;
+    top: -0.5em;
+    transform: translate(0%, -100%);
+
+    display: none;
+    cursor: default;
+}
+
+.songQueue{
+    overflow: auto;
+    width: 20em;
+    height: 18em;
+    background:whitesmoke;
+}
+
+.songQueue div{
+    font-size: 0.7em;
+    font-family: 'Varela Round', sans-serif;
+    padding: 2em 3em;
+}
+
+.bottomArrow{
+    position: absolute;
+    bottom: -0.75em;
+    right: 0.20em;
+    border-left: 2em solid transparent;
+    border-right: 2em solid transparent;
+    border-top: 3em solid whitesmoke;
+}
+
+.playIcon:active, .previousIcon:active, .nextIcon:active{
+    transform: rotate(15deg);
+    opacity: 0.3;
+}
+
+.previousIcon:active{ transform: rotate(-15deg); }
+
+input[type="range"]{
+  -webkit-appearance: none;
+  background: linear-gradient(to right, #4AA4F3 0%, #9A2720 100%);
+  background-size:  100% 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  margin: 0.1em;
+  width: 1em;
+  height: 1em;
+  background: #F26B5E;
+  position: relative;
+  z-index: 3;
+  box-shadow: 0 0 3px 2px rgba(0,0,0,0.5);
+}
+
+input[type="range"]::-webkit-slider-thumb:after{
+  content: " ";
+  width: 160px;
+  height: 10px;
+  position: absolute;
+  z-index: 1;
+  right: 20px;
+  top: 5px;
+  background: #ff5b32;
+  background: linear-gradient(to right, #f088fc 1%, #AC6CFF 70%);
+}
+
+@media only screen and (max-width: 1000px) {.songTitle{margin-left: 3em;}}
+@media only screen and (max-width: 768px) {
+    .songTitle{
+        font-size: 15px;
+        grid-column: 2 / 7;
+        width: 100%;
+        top: 1.6em;
+    }
+    .Player{ font-size: 15px; }
+    .currentTime, .totalTime{ font-size: 12px; }
+    .previousIcon{ 
+        grid-column: 7 / 7;
+        left: 25%; 
+    }
+    .playIcon{ grid-column: 8 / 8; }
+    .nextIcon{ grid-column: 9 / 9; }
+    .queue{
+        position: fixed; 
+        top: 4vh;
+        right: 2vw; 
+    }
+    .songQueue{
+        width: 105vw;
+        height: 90vh;
+    }
+    .queue{
+        display: flex;
+        flex-flow: column-reverse wrap;
+    }
+    .queue:hover .fa-times{ display: block !important; }
+    .fa-times:hover + .hip{ display: none !important; }
+    .fa-times:hover{ opacity: 0; }
+    .hip{
+        right: -0.5em;
+        bottom: 0em;
+    }
+    .bottomArrow{ display: none; }
+}
