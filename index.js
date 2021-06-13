@@ -9,14 +9,6 @@ require('dotenv').config();
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-const path = require('path');
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/build')));
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  });
-}
-
 const whitelist = ['http://localhost:3000', 'http://localhost:3001', 'https://skookshie.herokuapp.com]
 const corsOptions = {
   origin: function (origin, callback) {
@@ -42,6 +34,14 @@ app.get('/song', async(req, res) => {
     let spotifyResults = await spotAPI.getTracks(req.query.search);
     res.json({ spotify: spotifyResults });
 });
+
+const path = require('path');
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
 
 app.listen(PORT, console.log("Online"));
 
