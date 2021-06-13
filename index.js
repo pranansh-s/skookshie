@@ -10,19 +10,19 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 const whitelist = ['http://localhost:3000', 'http://localhost:3001', 'https://skookshie.herokuapp.com]
-const corsOptions = {
-  origin: function (origin, callback) {
-    console.log("** Origin of request " + origin)
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      console.log("Origin acceptable")
-      callback(null, true)
-    } else {
-      console.log("Origin rejected")
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-app.use(cors(corsOptions))
+//const corsOptions = {
+//origin: function (origin, callback) {
+//  console.log("** Origin of request " + origin)
+//  if (whitelist.indexOf(origin) !== -1 || !origin) {
+//    console.log("Origin acceptable")
+//    callback(null, true)
+//  } else {
+//    console.log("Origin rejected")
+//    callback(new Error('Not allowed by CORS'))
+//  }
+// }
+//}
+//app.use(cors(corsOptions))
 
 app.get('/youtube', async(req, res) => {
     let youtubeResults = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${querystring.escape(req.query.search)}&type=video&maxResults=1&videoCategoryId=10&key=${process.env.GOOGLE_API}`);
