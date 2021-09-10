@@ -25,7 +25,7 @@ const app = express();
 //app.use(cors(corsOptions))
 
 app.get('/youtube', async(req, res) => {
-    let youtubeResults = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${querystring.escape(req.query.search)}&type=video&maxResults=1&videoCategoryId=10&key=${process.env.GOOGLE_API}`);
+    let youtubeResults = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${querystring.escape(req.query.search)}&type=video&maxResults=1&videoCategoryId=10&key=${process.env.GOOGLE_API}`, {timeout: 60000});
     if(!youtubeResults){
 	console.log("RESTART");
 	return;
