@@ -24,14 +24,10 @@ const app = express();
 //}
 //app.use(cors(corsOptions))
 
-app.get('/youtube', async(req, res) => {
-    console.log("A");
+app.get('/youtube', async(req, res) => {    
     let youtubeResults = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${querystring.escape(req.query.search)}&type=video&maxResults=1&videoCategoryId=10&key=${process.env.GOOGLE_API}`);
-    console.log("B");
     let uri = `https://www.youtube.com/watch?v=${youtubeResults.data.items[0].id.videoId}`;
-    console.log("C");
-    youtubeAudio(uri, { filter: 'audioonly' }).pipe(res);
-    console.log("D");
+    youtubeAudio(uri, { quality: '140' }).pipe(res);
 });
 
 app.get('/song', async(req, res) => {
